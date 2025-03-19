@@ -66,9 +66,9 @@ function getWeatherIconUrl(description, isDay = true) {
         }
     } else if (lowerDesc.includes('clear') || lowerDesc.includes('fair')) {
         if (lowerDesc.includes('windy')) {
-            iconName = isDay ? 'Clear and Windy.png' : 'Fair and Windy (night).png';
+            iconName = isDay ? 'Sunny and Windy.png' : 'Clear and Windy.png';
         } else {
-            iconName = isDay ? 'Clear.png' : 'Fair (night).png';
+            iconName = isDay ? 'Sunny.png' : 'Clear.png';
         }
     } else if (lowerDesc.includes('sunny')) {
         if (lowerDesc.includes('mostly')) {
