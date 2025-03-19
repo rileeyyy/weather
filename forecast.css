@@ -20,13 +20,19 @@ body {
             background-color: white;
         }
 
-        .nav-top {
-            background-color: #003399;
-            color: white;
-            text-align: left;
-            padding: 2px 0;
-            font-size: 11px;
-        }
+.nav-top {
+    background-color: #003399;
+    color: white;
+    text-align: left;
+    padding: 2px 0;
+    font-size: 11px;
+}
+
+.nav-top a {
+    color: white;
+    text-decoration: none;
+    padding: 0 5px;
+}
 
         .banner {
             padding: 0;
