@@ -272,7 +272,6 @@ function getStationData(stationsUrl) {
         });
 }
 
-
 function updateCurrentConditions(data) {
     const properties = data.properties;
     if (properties) {
@@ -336,10 +335,12 @@ function updateCurrentConditions(data) {
     }
 }
 
+
 function updateHourlyForecast(data) {
     const hourlyContainer = document.getElementById('hourly-forecast');
     hourlyContainer.innerHTML = '';
-    if (data.properties && data.properties.periods) {
+    
+    if (data && data.properties && data.properties.periods) {
         const periods = data.properties.periods.slice(0, 4);
         periods.forEach(period => {
             const date = new Date(period.startTime);
@@ -355,35 +356,54 @@ function updateHourlyForecast(data) {
             } else {
                 timeLabel = `${hours} AM`;
             }
-            const isDay = hours >= 6 && hours < 18;
+            
+            const isDay = period.isDaytime;
             const iconUrl = getWeatherIconUrl(period.shortForecast, isDay);
+            
             const windDirection = period.windDirection;
-            const windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+
+            let windSpeed = '';
+            if (typeof period.windSpeed === 'string') {
+                windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+            } else if (typeof period.windSpeed === 'number') {
+                windSpeed = `${period.windSpeed}`;
+            }
+
+            let precipProb = 'N/A';
+            if (period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value !== null) {
+                precipProb = `${period.probabilityOfPrecipitation.value}%`;
+            }
 
             const periodDiv = document.createElement('div');
             periodDiv.className = 'forecast-period';
             periodDiv.innerHTML = `
                 <div class="period-title">${timeLabel}</div>
                 <div class="period-icon"><img src="${iconUrl}" alt="${period.shortForecast}" width="40" height="40"></div>
-                <div class="period-temp">${period.temperature}°${period.temperatureUnit}</div>
+                <div class="period-temp">${period.temperature}°F</div>
                 <div class="period-desc">${period.shortForecast}</div>
                 <div class="period-wind">${windDirection} ${windSpeed}</div>
+                <div class="period-precip">${precipProb}</div>
             `;
             hourlyContainer.appendChild(periodDiv);
         });
     }
 }
 
+
 function updateExtendedForecastDays(numDays) {
     if (window.forecastData && window.forecastData.properties && window.forecastData.properties.periods) {
         const forecastContainer = document.getElementById('extended-forecast');
         forecastContainer.innerHTML = '';
-        const periods = window.forecastData.properties.periods.filter(period => period.isDaytime);
-        const displayPeriods = periods.slice(0, numDays);
+        
+        const periods = window.forecastData.properties.periods;
+        const dayPeriods = periods.filter(period => period.isDaytime);
+        const displayPeriods = dayPeriods.slice(0, numDays);
+        
         displayPeriods.forEach((period, index) => {
             const date = new Date(period.startTime);
             const month = date.toLocaleString('en-US', { month: 'short' });
             const day = date.getDate();
+            
             let dayName;
             if (index === 0) {
                 dayName = 'Today';
@@ -392,21 +412,38 @@ function updateExtendedForecastDays(numDays) {
             } else {
                 dayName = period.name.split(' ')[0];
             }
+            
             const iconUrl = getWeatherIconUrl(period.shortForecast, period.isDaytime);
-            const nightIndex = periods.findIndex(p => p === period) + 1;
-            const nightPeriod = nightIndex < periods.length ? periods[nightIndex] : null;
+
+            const nightPeriods = periods.filter(p => !p.isDaytime);
+            const nightDate = new Date(date);
+            const nightPeriod = nightPeriods.find(p => {
+                const pDate = new Date(p.startTime);
+                return pDate.getDate() === date.getDate();
+            });
+            
             const lowTemp = nightPeriod ? nightPeriod.temperature : '--';
-            const precipProb = period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value !== null ?
-                period.probabilityOfPrecipitation.value + '%' : '0%';
-            const windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+            
+            let precipProb = '0%';
+            if (period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value !== null) {
+                precipProb = `${period.probabilityOfPrecipitation.value}%`;
+            }
+            
+            let windSpeed = '';
+            if (typeof period.windSpeed === 'string') {
+                windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+            } else if (typeof period.windSpeed === 'number') {
+                windSpeed = `${period.windSpeed}`;
+            }
+            
             const windDirection = period.windDirection;
 
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="day-name">${dayName} <span class="day-date">${month} ${day}</span></td>
                 <td><img src="${iconUrl}" alt="${period.shortForecast}" width="30" height="30"></td>
-                <td>${period.temperature}°${period.temperatureUnit}</td>
-                <td>${lowTemp}°${nightPeriod ? nightPeriod.temperatureUnit : 'F'}</td>
+                <td>${period.temperature}°F</td>
+                <td>${lowTemp}°F</td>
                 <td>${precipProb}</td>
                 <td>${windDirection} ${windSpeed} mph</td>
             `;
@@ -419,11 +456,14 @@ function updateWeekendForecast() {
     if (window.forecastData && window.forecastData.properties && window.forecastData.properties.periods) {
         const forecastContainer = document.getElementById('extended-forecast');
         forecastContainer.innerHTML = '';
-        const periods = window.forecastData.properties.periods.filter(period => period.isDaytime);
-        const weekendPeriods = periods.filter(period => {
+        
+        const periods = window.forecastData.properties.periods;
+        const dayPeriods = periods.filter(period => period.isDaytime);
+        
+        const weekendPeriods = dayPeriods.filter(period => {
             const date = new Date(period.startTime);
             const day = date.getDay();
-            return day === 0 || day === 6;
+            return day === 0 || day === 6; 
         });
 
         if (weekendPeriods.length === 0) {
@@ -437,26 +477,43 @@ function updateWeekendForecast() {
             return;
         }
 
-        weekendPeriods.forEach((period, index) => {
+        weekendPeriods.forEach((period) => {
             const date = new Date(period.startTime);
             const month = date.toLocaleString('en-US', { month: 'short' });
             const day = date.getDate();
             const dayName = date.getDay() === 0 ? 'Sunday' : 'Saturday';
+            
             const iconUrl = getWeatherIconUrl(period.shortForecast, period.isDaytime);
-            const periodIndex = periods.findIndex(p => p === period);
-            const nightPeriod = periodIndex + 1 < periods.length ? periods[periodIndex + 1] : null;
+
+            const nightPeriods = periods.filter(p => !p.isDaytime);
+            const nightDate = new Date(date);
+            const nightPeriod = nightPeriods.find(p => {
+                const pDate = new Date(p.startTime);
+                return pDate.getDate() === date.getDate();
+            });
+            
             const lowTemp = nightPeriod ? nightPeriod.temperature : '--';
-            const precipProb = period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value !== null ?
-                period.probabilityOfPrecipitation.value + '%' : '0%';
-            const windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+
+            let precipProb = '0%';
+            if (period.probabilityOfPrecipitation && period.probabilityOfPrecipitation.value !== null) {
+                precipProb = `${period.probabilityOfPrecipitation.value}%`;
+            }
+
+            let windSpeed = '';
+            if (typeof period.windSpeed === 'string') {
+                windSpeed = period.windSpeed.replace(/\s+to\s+/, '-').replace(' mph', '');
+            } else if (typeof period.windSpeed === 'number') {
+                windSpeed = `${period.windSpeed}`;
+            }
+            
             const windDirection = period.windDirection;
 
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td class="day-name">${dayName} <span class="day-date">${month} ${day}</span></td>
                 <td><img src="${iconUrl}" alt="${period.shortForecast}" width="30" height="30"></td>
-                <td>${period.temperature}°${period.temperatureUnit}</td>
-                <td>${lowTemp}°${nightPeriod ? nightPeriod.temperatureUnit : 'F'}</td>
+                <td>${period.temperature}°F</td>
+                <td>${lowTemp}°F</td>
                 <td>${precipProb}</td>
                 <td>${windDirection} ${windSpeed} mph</td>
             `;
