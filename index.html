@@ -18,78 +18,74 @@
             <img src="./Assets/the_weather_channel_logo.png" alt="The Weather Channel">
         </div>
 
-<div class="local-forecast">
-    <img src="./Assets/local_forecast.png" alt="local forecast" height="30">
-    <div class="search-box">
-        <img src="./Assets/1.png" alt="1" width="16" height="16">
-        <input type="text" id="location-input" placeholder="Enter city or US zip">
-        <img src="./Assets/2.png" alt="2" width="16" height="16">
-        <select>
-            <option>See weather related to ...</option>
-        </select>
-        <button class="go-button" id="search-button">Go</button>
-    </div>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('search-button').addEventListener('click', function() {
-        redirectToForecast();
-    });
+        <div class="local-forecast">
+            <img src="./Assets/local_forecast.png" alt="local forecast" height="30">
+            <div class="search-box">
+                <img src="./Assets/1.png" alt="1" width="16" height="16">
+                <input type="text" id="location-input" placeholder="Enter city or US zip">
+                <img src="./Assets/2.png" alt="2" width="16" height="16">
+                <select>
+                    <option>See weather related to ...</option>
+                </select>
+                <button class="go-button" id="search-button">Go</button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('search-button').addEventListener('click', function() {
+                    redirectToForecast();
+                });
 
-    document.getElementById('location-input').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            redirectToForecast();
-        }
-    });
-    function redirectToForecast() {
-        const searchInput = document.getElementById('location-input').value.trim();
+                document.getElementById('location-input').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        redirectToForecast();
+                    }
+                });
+                function redirectToForecast() {
+                    const searchInput = document.getElementById('location-input').value.trim();
 
-        if (searchInput) {
-            if (/^\d{5}$/.test(searchInput)) {
-                window.location.href = `forecast.html?zip=${encodeURIComponent(searchInput)}`;
-            } else {
-                window.location.href = `forecast.html?city=${encodeURIComponent(searchInput)}`;
-            }
-        } else {
-            window.location.href = 'forecast.html';
-        }
-    }
-});
-
-</script>
-
+                    if (searchInput) {
+                        if (/^\d{5}$/.test(searchInput)) {
+                            window.location.href = `forecast.html?zip=${encodeURIComponent(searchInput)}`;
+                        } else {
+                            window.location.href = `forecast.html?city=${encodeURIComponent(searchInput)}`;
+                        }
+                    } else {
+                        window.location.href = 'forecast.html';
+                    }
+                }
+            });
+        </script>
 
         <div class="content-box">
             <div class="box-header">Weather Center - Top Stories</div>
             <div class="box-content">
                 <div class="weather-story">
                     <div class="weather-story-text">
-                        <h3><a href="#">Winter's Early Returns</a></h3>
-                        <p>Winter made an early entry a few weeks ago and has returned time and time again ever since.</p>
+                        <h3><a href="#"></a></h3>
+                        <p></p>
 
                         <div class="news-links">
                             <strong>News Links</strong>
                             <ul>
-                                <li><a href="#">Weather right now</a></li>
-                                <li><a href="#">Kilimanjaro's peak suffers alarming shrinkage</a></li>
-                                <li><a href="#">Snow comes to northern New Hampshire</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
 
                         <div class="seasonal-links">
                             <strong>Seasonal Links</strong>
                             <ul>
-                                <li><a href="#">Tropical Update</a></li>
-                                <li><a href="#">Storm Watch</a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="weather-map">
                         <div class="box-header">Current Surface Map</div>
                         <img src="./Assets/forecast.png" alt="Current Surface Map" width="200">
-                        <p><a href="#">click to enlarge</a> &nbsp;&nbsp; <a href="#">see more maps</a></p>
-                        <p>Daily Video:</p>
-                        <p><a href="#">Weekly Planner</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"> &nbsp; <a href="#">Weekend Outlook</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></p>
+                        <p><a href="#">click to enlarge</a></p>
                     </div>
                 </div>
             </div>
@@ -171,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             </div>
- <div class="right-side">
+            <div class="right-side">
                 <div class="content-box">
                     <div class="box-header">What's On The Weather Channel</div>
                     <div class="box-content">
@@ -184,34 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
 
-                <div class="content-box">
-                    <div class="box-header">Get Your Weather Anywhere&reg;</div>
-                    <div class="box-content">
-                        <p>When you can't get to weather.com, we'll send the weather to you.</p>
-                        <ul>
-                            <li>Download <a href="#">Desktop Weather</a>. It's FREE!</li>
-                            <li>Receive weather forecasts in your e-mail. Sign up for <a href="#">Inbox Weather</a> today.</li>
-                            <li>Create a <a href="#">customized weather Web page</a>.</li>
-                            <li>Receive timely, severe weather alerts on your <a href="#">cellular phone</a> or <a href="#">pager</a>.</li>
-                            <li>Access current conditions on your <a href="#">PDA</a>.</li>
-                            <li>Include weather on your <a href="#">Web site</a>.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="content-box">
-                    <div class="box-header">About Us</div>
-                    <div class="box-content">
-                        <ul>
-                            <li><a href="#">Learn</a> about The Weather Channel</li>
-                            <li><a href="#">Request Assistance</a> with our site</li>
-                            <li><a href="#">Video</a>: Watch Our Forecasts</li>
-                            <li><a href="#">Submit</a> photos to our Photo Gallery</li>
-                            <li><a href="#">Share</a> messages with our community</li>
-                            <li><a href="#">Work</a> with us - Jobs at TWC</li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="content-box">
                     <div class="box-header">See What's New</div>
                     <div class="box-content">
@@ -233,9 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="#">Tell Us What You Think</a>
         </div>
 
-        
         <br>
-
 
         <div class="footer-section">
             <div class="footer">
@@ -257,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     </div>
+    <script src="news.js"></script>
 </body>
 
 </html>
