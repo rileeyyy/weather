@@ -1,0 +1,295 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    color: #000;
+    background-color: #f0f0f0;
+}
+
+a {
+    color: #0033CC;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#container {
+    width: 780px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.nav-top {
+    background-color: #003399;
+    color: white;
+    text-align: left;
+    padding: 2px 0;
+    font-size: 11px;
+}
+
+.nav-top a {
+    color: white;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.banner {
+    padding: 0;
+    margin: 0;
+    height: 60px;
+}
+
+.banner img {
+    width: 100%;
+    height: 60px;
+}
+
+.local-forecast {
+    background-color: #FFC125;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #FFD700;
+    border-bottom: 1px solid #E6AB00;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+input[type="text"] {
+    border: 1px solid #000;
+    padding: 2px;
+    margin: 0 5px;
+    width: 150px;
+}
+
+select {
+    border: 1px solid #000;
+    padding: 2px;
+    margin: 0 5px;
+    width: 180px;
+}
+
+.go-button {
+    background-color: transparent;
+    border: none;
+    padding: 2px 8px;
+    cursor: pointer;
+    outline: none;
+}
+
+.content-box {
+    border: 1px solid #000;
+    margin: 5px;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.box-header {
+    font-weight: bold;
+    padding: 3px 5px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 20px 20px 0 0;
+}
+
+.box-content {
+    padding: 5px;
+}
+
+h3 {
+    color: #0033CC;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.weather-story {
+    display: flex;
+}
+
+.weather-story-text {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.weather-map {
+    text-align: center;
+    padding: 0;
+    width: 200px;
+}
+
+.weather-map p {
+    margin: 5px 0;
+    font-size: 11px;
+}
+
+.news-links,
+.seasonal-links {
+    margin-top: 10px;
+}
+
+ul {
+    margin: 5px 0;
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+li {
+    margin-bottom: 3px;
+}
+
+.two-column-layout {
+    display: flex;
+}
+
+.left-side {
+    width: 65%;
+}
+
+.right-side {
+    width: 35%;
+}
+
+.section-header {
+    background-color: #f6dd42;
+    padding: 3px 5px;
+    font-weight: bold;
+    border-top: 1px solid #FFD700;
+    border-bottom: 1px solid #E6AB00;
+}
+
+.section-content {
+    padding: 5px;
+}
+
+.section-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.section-column {
+    flex: 1;
+    padding: 0 5px;
+}
+
+.video-icon {
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+.hawaii-contest {
+    display: flex;
+    align-items: flex-start;
+}
+
+.hawaii-text {
+    flex: 3;
+    padding-right: 10px;
+}
+
+.hawaii-image {
+    flex: 2;
+    text-align: center;
+}
+
+.tell-us {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.yellow-section {
+    background-color: #f6dd42;
+
+    font-weight: bold;
+}
+
+.section-table {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 5px;
+}
+
+.section-table td {
+    padding: 3px 5px;
+    vertical-align: top;
+    border-bottom: 1px solid #eee;
+}
+
+.section-table td:first-child {
+    width: 100px;
+    font-weight: bold;
+}
+
+.footer-section {
+    position: relative;
+    margin-top: 20px;
+}
+
+.footer {
+    position: relative;
+    z-index: 2;
+    margin-bottom: -25px;
+    color: white;
+    padding: 5px 0 5px 20px;
+    text-align: left;
+    font-size: 11px;
+}
+
+.footer a {
+    color: white;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.footer-logo {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.footer-logo img {
+    display: block;
+    width: 768px;
+    height: 27px;
+}
+
+.copyright-row {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    position: relative;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+}
+
+.aol-ad {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.international {
+    background-color: #f6dd42;
+    font-weight: bold;
+}
+
+.international-links {
+    padding: 5px;
+    background-color: #fff;
+    margin-top: 5px;
+}

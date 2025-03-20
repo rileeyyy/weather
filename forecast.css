@@ -1,0 +1,376 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            color: #000;
+            background-color: #f0f0f0;
+        }
+
+        a {
+            color: #0033CC;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        #container {
+            width: 780px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .nav-top {
+            background-color: #003399;
+            color: white;
+            text-align: left;
+            padding: 2px 0;
+            font-size: 11px;
+        }
+
+        .banner {
+            padding: 0;
+            margin: 0;
+            height: 60px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 60px;
+        }
+
+        .local-forecast {
+            background-color: #FFC125;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #FFD700;
+            border-bottom: 1px solid #E6AB00;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #000;
+            padding: 2px;
+            margin: 0 5px;
+            width: 150px;
+        }
+
+        select {
+            border: 1px solid #000;
+            padding: 2px;
+            margin: 0 5px;
+            width: 180px;
+        }
+
+        .go-button {
+            background-color: transparent;
+            border: none;
+            padding: 2px 8px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .current-conditions {
+            margin-top: 1px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .conditions-header {
+            background: linear-gradient(to bottom, #6699cc, #003399);
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            text-align: left;
+            border-bottom: 1px solid #666;
+            font-size: 14px;
+        }
+
+        .conditions-content {
+            display: flex;
+            background: linear-gradient(to bottom, #e4f1fd, #c3daf9);
+            padding: 10px;
+        }
+
+        .current-details {
+            display: flex;
+            flex: 2;
+        }
+
+        .current-icon {
+            width: 80px;
+            text-align: center;
+        }
+
+        .current-icon img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .current-data {
+            flex: 1;
+            padding-left: 10px;
+        }
+
+        .current-temp {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .current-desc {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .current-details-right {
+            flex: 1;
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+
+        .current-feels {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .current-stats table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .current-stats td {
+            padding: 1px 0;
+        }
+
+        .current-stats td:first-child {
+            text-align: left;
+        }
+
+        .current-stats td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .forecast-section {
+            margin: 10px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .forecast-header {
+            background: linear-gradient(to bottom, #003399, #001166);
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .forecast-content {
+            display: flex;
+            background-color: #003399;
+            color: white;
+        }
+
+        .forecast-period {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            border-right: 1px solid #4477aa;
+        }
+
+        .forecast-period:last-child {
+            border-right: none;
+        }
+
+        .period-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .period-icon img {
+            width: 40px;
+            height: 40px;
+            margin: 5px 0;
+        }
+
+        .period-temp {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .period-desc {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .period-wind {
+            font-size: 10px;
+            color: #aaccff;
+        }
+
+        .footer-section {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 2;
+            margin-bottom: -25px;
+            color: white;
+            padding: 5px 0 5px 20px;
+            text-align: left;
+            font-size: 11px;
+        }
+
+        .footer a {
+            color: white;
+            padding: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-logo {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin: 0;
+        }
+
+        .footer-logo img {
+            display: block;
+            width: 768px;
+            height: 27px;
+        }
+
+        .copyright-row {
+            display: flex;
+            align-items: center;
+            padding: 5px 20px;
+            position: relative;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 10px;
+            width: 100%;
+        }
+
+        .aol-ad {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+        }
+        .extended-forecast {
+            margin: 10px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .extended-header {
+            background: linear-gradient(to bottom, #003399, #001166);
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .extended-content {
+            padding: 0;
+            background-color: white;
+        }
+
+        .extended-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .extended-table th {
+            background-color: #e4f1fd;
+            padding: 4px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            font-size: 11px;
+        }
+
+        .extended-table td {
+            padding: 5px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 11px;
+        }
+
+        .day-name {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .day-date {
+            color: #666;
+            font-size: 10px;
+            display: block;
+        }
+
+        .more-weather {
+            margin: 10px;
+            text-align: right;
+            font-size: 11px;
+        }
+
+
+        .forecast-tabs {
+            display: flex;
+            margin: 10px 10px 0 10px;
+        }
+
+        .forecast-tab {
+            padding: 5px 15px;
+            background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+            border: 1px solid #999;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .forecast-tab.active {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-banner {
+            background: linear-gradient(to bottom, #003399, #0055cc);
+            color: white;
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 10px 0 10px;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+        }

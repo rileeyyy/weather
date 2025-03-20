@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Forecast - The Weather Channel</title>
+    <link rel="stylesheet" href="forecast.css"/>
+</head>
+
+<body>
+    <div id="container">
+        <div class="nav-top">
+            | <a href="index.html">Home</a> | <a href="#">Health</a> | <a href="#">Travel</a> | <a href="#">Sporting Events</a> | <a href="#">Recreation</a> | <a href="#">Home & Garden</a> | <a href="#">Local</a> | <a href="#">World</a> | <a href="#">News</a> | <a href="#">Maps</a> | <a href="#">My Weather</a>
+        </div>
+
+        <div class="banner">
+            <img src="./Assets/the_weather_channel_logo.png" alt="The Weather Channel">
+        </div>
+
+        <div class="local-forecast">
+            <img src="./Assets/local_forecast.png" alt="local forecast" height="30">
+            <div class="search-box">
+                <img src="./Assets/1.png" alt="1" width="16" height="16">
+                <input type="text" id="location-input" placeholder="Enter city or US zip">
+                <img src="./Assets/2.png" alt="2" width="16" height="16">
+                <select>
+                    <option>See weather related to ...</option>
+                </select>
+                <button class="go-button" id="search-button">Go</button>
+            </div>
+        </div>
+
+        <div class="location-banner" id="location-display">
+            Loading location...
+        </div>
+
+        <div class="forecast-tabs">
+            <div class="forecast-tab active">today</div>
+            <div class="forecast-tab">5-day</div>
+            <div class="forecast-tab">10-day</div>
+            <div class="forecast-tab">weekend</div>
+        </div>
+
+        <div class="current-conditions">
+            <div class="conditions-header">current conditions</div>
+            <div class="conditions-content">
+                <div class="current-details">
+                    <div class="current-icon">
+                        <img id="current-icon" src="/api/placeholder/70/70" alt="Weather Icon">
+                        <div class="current-desc" id="current-desc">Loading...</div>
+                    </div>
+                    <div class="current-data">
+                        <div class="current-temp" id="current-temp">--°F</div>
+                        <div class="current-feels" id="current-feels">Feels Like: --°F</div>
+                        <div class="current-updated" id="current-updated">Updated: --</div>
+                    </div>
+                </div>
+                <div class="current-details-right">
+                    <div class="current-stats">
+                        <table>
+                            <tr>
+                                <td>Humidity:</td>
+                                <td id="humidity">--%</td>
+                            </tr>
+                            <tr>
+                                <td>Wind:</td>
+                                <td id="wind">-- mph</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure:</td>
+                                <td id="pressure">--</td>
+                            </tr>
+                            <tr>
+                                <td>Dew Point:</td>
+                                <td id="dew-point">--°F</td>
+                            </tr>
+                            <tr>
+                                <td>Visibility:</td>
+                                <td id="visibility">-- mi</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-section">
+            <div class="forecast-header">today's forecast</div>
+            <div class="forecast-content" id="hourly-forecast">
+            </div>
+        </div>
+
+        <div class="extended-forecast">
+            <div class="extended-header">5-day forecast</div>
+            <div class="extended-content">
+                <table class="extended-table">
+                    <tr>
+                        <th width="16%">Day</th>
+                        <th width="16%">Conditions</th>
+                        <th width="16%">High</th>
+                        <th width="16%">Low</th>
+                        <th width="18%">Precip.</th>
+                        <th width="18%">Wind</th>
+                    </tr>
+                    <tbody id="extended-forecast">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="footer">
+                <a href="#">Home</a> | <a href="#">Site Map</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> | <a href="#">Jobs</a> | <a href="#">Advertise</a> | <a href="#">Weather On Your Site</a>
+            </div>
+            <div class="footer-logo">
+                <img src="./Assets/footer.png" alt="weather.com">
+            </div>
+        </div>
+
+        <div class="copyright-row">
+            <div class="copyright">
+                Copyright © 1995-2002, The Weather Channel Enterprises, Inc.<br>
+                Your use of this site constitutes your acceptance of the<br>
+                <a href="#">LEGAL RESTRICTIONS AND TERMS OF USE</a>.
+            </div>
+            <div class="aol-ad">
+                <img src="./Assets/aol_animated.gif" alt="AOL Advertisement" height="31" width="88">
+            </div>
+        </div>
+    </div>
+
+    <script src="forecast.js">
+    </script>
+</body>
+</html>

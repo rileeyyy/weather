@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weather Channel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="nav-top">
+            | Home | Health | Travel | Sporting Events | Recreation | Home & Garden | Local | World | News | Maps | My Weather
+        </div>
+
+        <div class="banner">
+            <img src="./Assets/the_weather_channel_logo.png" alt="The Weather Channel">
+        </div>
+
+<div class="local-forecast">
+    <img src="./Assets/local_forecast.png" alt="local forecast" height="30">
+    <div class="search-box">
+        <img src="./Assets/1.png" alt="1" width="16" height="16">
+        <input type="text" id="location-input" placeholder="Enter city or US zip">
+        <img src="./Assets/2.png" alt="2" width="16" height="16">
+        <select>
+            <option>See weather related to ...</option>
+        </select>
+        <button class="go-button" id="search-button">Go</button>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('search-button').addEventListener('click', function() {
+        redirectToForecast();
+    });
+
+    document.getElementById('location-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            redirectToForecast();
+        }
+    });
+    function redirectToForecast() {
+        const searchInput = document.getElementById('location-input').value.trim();
+
+        if (searchInput) {
+            if (/^\d{5}$/.test(searchInput)) {
+                window.location.href = `forecast.html?zip=${encodeURIComponent(searchInput)}`;
+            } else {
+                window.location.href = `forecast.html?city=${encodeURIComponent(searchInput)}`;
+            }
+        } else {
+            window.location.href = 'forecast.html';
+        }
+    }
+});
+
+</script>
+
+
+        <div class="content-box">
+            <div class="box-header">Weather Center - Top Stories</div>
+            <div class="box-content">
+                <div class="weather-story">
+                    <div class="weather-story-text">
+                        <h3><a href="#">Winter's Early Returns</a></h3>
+                        <p>Winter made an early entry a few weeks ago and has returned time and time again ever since.</p>
+
+                        <div class="news-links">
+                            <strong>News Links</strong>
+                            <ul>
+                                <li><a href="#">Weather right now</a></li>
+                                <li><a href="#">Kilimanjaro's peak suffers alarming shrinkage</a></li>
+                                <li><a href="#">Snow comes to northern New Hampshire</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="seasonal-links">
+                            <strong>Seasonal Links</strong>
+                            <ul>
+                                <li><a href="#">Tropical Update</a></li>
+                                <li><a href="#">Storm Watch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="weather-map">
+                        <div class="box-header">Current Surface Map</div>
+                        <img src="./Assets/forecast.png" alt="Current Surface Map" width="200">
+                        <p><a href="#">click to enlarge</a> &nbsp;&nbsp; <a href="#">see more maps</a></p>
+                        <p>Daily Video:</p>
+                        <p><a href="#">Weekly Planner</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"> &nbsp; <a href="#">Weekend Outlook</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-column-layout">
+            <div class="left-side">
+                <div class="content-box">
+                    <div class="box-header">Connect with Your Weather</div>
+                    <div class="section-content">
+                        <div class="section-row">
+                            <div class="section-column">
+                                <div class="section-header">Health</div>
+                                <p>Help for your seasonal sneezes, sniffles, wheezes, and aches.</p>
+                                <ul>
+                                    <li><a href="#">Pollen Reports</a></li>
+                                    <li><a href="#">Air Quality Forecast</a></li>
+                                    <li><a href="#">Aches & Pains</a></li>
+                                    <li><a href="#">Skin Protection</a></li>
+                                </ul>
+                            </div>
+                            <div class="section-column">
+                                <div class="section-header">Travel</div>
+                                <p>Stay on schedule with detailed weather for all types of travel.</p>
+                                <ul>
+                                    <li><a href="#">Vacation Planner</a></li>
+                                    <li><a href="#">Daily Traveler</a></li>
+                                    <li><a href="#">Interstate Forecast</a></li>
+                                    <li><a href="#">Daily Driving Forecast</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="section-row">
+                            <div class="section-column">
+                                <div class="section-header">Sporting Events</div>
+                                <p>Forecasts for all NASCAR, PGA TOUR and ATP Tour events.</p>
+                                <ul>
+                                    <li><a href="#">Forecast for Racing Events</a></li>
+                                    <li><a href="#">PGA TOUR Weather</a></li>
+                                    <li><a href="#">Forecast for Tennis Events</a></li>
+                                    <li><a href="#">Golf Outlook</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                                </ul>
+                            </div>
+                            <div class="section-column">
+                                <div class="section-header">Recreation</div>
+                                <p>Take in the forecast before you take to nature.</p>
+                                <ul>
+                                    <li><a href="#">Fall Foliage</a></li>
+                                    <li><a href="#">Boat & Beach</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                                    <li><a href="#">Boat & Beach Report</a></li>
+                                    <li><a href="#">National Parks</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="section-row">
+                            <div class="section-column">
+                                <div class="section-header">Home & Garden</div>
+                                <p>Tips for a beautiful garden and weather-wise house.</p>
+                                <ul>
+                                    <li><a href="#">Lawn & Garden Almanac</a></li>
+                                    <li><a href="#">Home Maintenance</a></li>
+                                    <li><a href="#">Schoolday Forecast</a></li>
+                                    <li><a href="#">Daily Home & Garden Outlook</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                                </ul>
+                            </div>
+                            <div class="section-column">
+                                <div class="section-header">Golf</div>
+                                <p>Monitor the conditions at golf courses in your area.</p>
+                                <ul>
+                                    <li><a href="#">Golf Course Weather</a></li>
+                                    <li><a href="#">Golfer's Outlook</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                                    <li><a href="#">Pro Golf Schedules and Weather</a></li>
+                                    <li><a href="#">Today's Golf Forecast</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="content-box">
+                    <div class="box-header">What's On The Weather Channel</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><a href="#">It's StormWeek! Tonight at 9p ET/PT</a></li>
+                            <li><a href="#">Be Prepared with StormWatch</a> <img src="./Assets/video_icon.png" alt="video" class="video-icon"></li>
+                            <li><a href="#">This Sun. on Atmospheres: The Blizzard of '96</a></li>
+                            <li><a href="#">OnAir info: Talent, Programs, Music...</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header">Get Your Weather Anywhere&reg;</div>
+                    <div class="box-content">
+                        <p>When you can't get to weather.com, we'll send the weather to you.</p>
+                        <ul>
+                            <li>Download <a href="#">Desktop Weather</a>. It's FREE!</li>
+                            <li>Receive weather forecasts in your e-mail. Sign up for <a href="#">Inbox Weather</a> today.</li>
+                            <li>Create a <a href="#">customized weather Web page</a>.</li>
+                            <li>Receive timely, severe weather alerts on your <a href="#">cellular phone</a> or <a href="#">pager</a>.</li>
+                            <li>Access current conditions on your <a href="#">PDA</a>.</li>
+                            <li>Include weather on your <a href="#">Web site</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header">About Us</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><a href="#">Learn</a> about The Weather Channel</li>
+                            <li><a href="#">Request Assistance</a> with our site</li>
+                            <li><a href="#">Video</a>: Watch Our Forecasts</li>
+                            <li><a href="#">Submit</a> photos to our Photo Gallery</li>
+                            <li><a href="#">Share</a> messages with our community</li>
+                            <li><a href="#">Work</a> with us - Jobs at TWC</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header">See What's New</div>
+                    <div class="box-content">
+                        <h3><a href="#">Win a Trip to Hawaii</a></h3>
+                        <div class="hawaii-contest">
+                            <div class="hawaii-text">
+                                <p>The Weather Channel wants to send you and a guest on an exotic Hawaiian vacation! <a href="#">Enter Now</a> for your chance to win a 3-night stay in a luxurious Maui resort and airfare from anywhere within the continental U.S., to one of the most romantic destinations on earth!</p>
+                            </div>
+                            <div class="hawaii-image">
+                                <img src="./Assets/sweep.png" alt="Hawaii Sweepstakes" width="150">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tell-us">
+            <a href="#">Tell Us What You Think</a>
+        </div>
+
+        <div class="yellow-section">
+            How Weather Affects Your Life
+            <table class="section-table">
+                <tr>
+                    <td>Health</td>
+                    <td><a href="#">Health Forecast</a>, <a href="#">Allergies</a>, <a href="#">Skin Protection</a>, <a href="#">Air Quality</a>, <a href="#">Aches & Pains</a>, <a href="#">Cold & Flu</a></td>
+                </tr>
+                <tr>
+                    <td>Travel</td>
+                    <td><a href="#">Travel Forecast</a>, <a href="#">Daily Traveler</a>, <a href="#">Vacation Planner</a>, <a href="#">Driving</a>, <a href="#">Aviation</a></td>
+                </tr>
+                <tr>
+                    <td>Sporting Events</td>
+                    <td><a href="#">Sporting Events Forecast</a>, <a href="#">Pro Golf</a>, <a href="#">Racing</a>, <a href="#">Tennis</a>, <a href="#">Baseball</a></td>
+                </tr>
+                <tr>
+                    <td>Recreation</td>
+                    <td><a href="#">Recreation Forecast</a>, <a href="#">Golf</a>, <a href="#">Boat & Beach</a>, <a href="#">National Parks</a>, <a href="#">Ski</a>, <a href="#">Fall Foliage</a></td>
+                </tr>
+                <tr>
+                    <td>Home & Garden</td>
+                    <td><a href="#">Home & Garden Forecast</a>, <a href="#">Home</a>, <a href="#">Garden</a>, <a href="#">Schoolday</a></td>
+                </tr>
+                <tr>
+                    <td>Local</td>
+                    <td><a href="#">Local Weather Forecasts</a></td>
+                </tr>
+                <tr>
+                    <td>World</td>
+                    <td><a href="#">World Weather Forecasts & International Sites</a></td>
+                </tr>
+                <tr>
+                    <td>News</td>
+                    <td><a href="#">News Center</a>, <a href="#">Storm Watch</a>, <a href="#">Tropical Update</a>, <a href="#">Atmospheres</a>, <a href="#">Special Reports</a>, <a href="#">Financial Forecast</a></td>
+                </tr>
+                <tr>
+                    <td>My Weather</td>
+                    <td><a href="#">My Page</a>, <a href="#">Desktop</a>, <a href="#">Email</a>, <a href="#">Phone</a>, <a href="#">PDA</a>, <a href="#">Pager</a>, <a href="#">My Site</a></td>
+                </tr>
+                <tr>
+                    <td>Interact</td>
+                    <td><a href="#">Photo Gallery</a>, <a href="#">Boards & Forums</a>, <a href="#">Contact Us</a></td>
+                </tr>
+                <tr>
+                    <td>Education</td>
+                    <td><a href="#">Weather Classroom</a>, <a href="#">Dave's Dictionary</a>, <a href="#">Weather Encyclopedia</a>, <a href="#">Glossary</a>, <a href="#">SafeSide</a>, <a href="#">Rays Awareness</a></td>
+                </tr>
+                <tr>
+                    <td>Multimedia</td>
+                    <td><a href="#">Video Forecasts</a>, <a href="#">Audio Forecasts</a></td>
+                </tr>
+                <tr>
+                    <td>Shopping</td>
+                    <td><a href="#">The Weather Channel Store</a></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="international">
+            International
+            <div class="international-links">
+                <a href="#">Brazil</a> | <a href="#">France</a> | <a href="#">Germany</a> | <a href="#">Latin America</a> | <a href="#">United Kingdom</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="footer">
+                Home | Site Map | About Us | Contact Us | Jobs | Advertise | Weather On Your Site
+            </div>
+            <div class="footer-logo">
+                <img src="./Assets/footer.png" alt="weather.com">
+            </div>
+        </div>
+
+        <div class="copyright-row">
+            <div class="copyright">
+                Copyright © 1995-2002, The Weather Channel Enterprises, Inc.<br>
+                Your use of this site constitutes your acceptance of the<br>
+                <a href="#">LEGAL RESTRICTIONS AND TERMS OF USE</a>.
+            </div>
+            <div class="aol-ad">
+                <img src="./Assets/aol_animated.gif" alt="AOL Advertisement" height="31" width="88">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
