@@ -12,6 +12,18 @@ function getWeatherIconUrl(description, isDay = true) {
         } else {
             iconName = 'Thunderstorms.png';
         }
+    } else if (lowerDesc.includes('drizzle')) {
+        if (lowerDesc.includes('freezing')) {
+            iconName = 'Freezing Rain.png';
+        } else if (lowerDesc.includes('light')) {
+            iconName = 'Light Rain - Showers.png';
+        } else if (lowerDesc.includes('scattered') || lowerDesc.includes('chance')) {
+            iconName = isDay ? 'Scattered Showers (day).png' : 'Scattered Showers (night).png';
+        } else if (lowerDesc.includes('isolated')) {
+            iconName = isDay ? 'Isolated Showers (day).png' : 'Isolated Showers (night).png';
+        } else {
+            iconName = 'Light Rain - Showers.png';
+        }
     } else if (lowerDesc.includes('rain') || lowerDesc.includes('shower')) {
         if (lowerDesc.includes('light') || lowerDesc.includes('few')) {
             iconName = 'Light Rain - Showers.png';
@@ -104,12 +116,23 @@ function getWeatherIconUrl(description, isDay = true) {
         iconName = '(Blowing) Dust.png';
     } else if (lowerDesc.includes('windy')) {
         iconName = 'Windy Conditions.png';
+    } else if (lowerDesc.includes('chance')) {
+        if (lowerDesc.includes('rain')) {
+            iconName = isDay ? 'Scattered Showers (day).png' : 'Scattered Showers (night).png';
+        } else if (lowerDesc.includes('snow')) {
+            iconName = isDay ? 'Scattered Snow (day).png' : 'Scattered Snow (night).png';
+        } else if (lowerDesc.includes('storm')) {
+            iconName = isDay ? 'Scattered Thunderstorms (day).png' : 'Scattered Thunderstorms (night).png';
+        } else {
+            iconName = isDay ? 'Partly Cloudy (day).png' : 'Partly Cloudy (night).png';
+        }
     } else {
         iconName = 'Not Available.png';
     }
 
     return `weather_icons/${iconName}`;
 }
+
 
 function getWeatherByZip(zip) {
 // i love exposing private api keys!
