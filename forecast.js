@@ -313,9 +313,15 @@ function updateCurrentConditions(data) {
         
         const windDirection = properties.windDirection.value !== null ?
             getCardinalDirection(properties.windDirection.value) : 'N/A';
+        if (windSpeedMph < 5) {
+        document.getElementById('wind').textContent = windSpeedMph !== 0 ?
+            `Calm` : 'N/A';
+        } else {
         document.getElementById('wind').textContent = windSpeedMph !== 0 ?
             `${windDirection} ${windSpeedMph} mph` : 'N/A';
-        
+        }
+
+            
         const pressure = properties.barometricPressure.value;
         const pressureInHg = pressure !== null ?
             (properties.barometricPressure.unitCode && properties.barometricPressure.unitCode.includes('Pa') ?
