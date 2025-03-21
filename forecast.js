@@ -283,13 +283,10 @@ function updateCurrentConditions(data) {
         const hours = now.getHours();
         const isDay = hours >= 6 && hours < 18;
         
-        let windSpeedMph = 0;
-        if (properties.windSpeed && properties.windSpeed.value !== null) {
-            const windSpeed = properties.windSpeed.value;
-            windSpeedMph = properties.windSpeed.unitCode && properties.windSpeed.unitCode.includes('km_h') ?
-                Math.round(windSpeed * 0.621371) : Math.round(windSpeed);
-        }
-        
+        const windSpeed = properties.windSpeed.value;
+        const windSpeedMph = windSpeed !== null ?
+            (properties.windSpeed.unitCode && properties.windSpeed.unitCode.includes('km_h') ?
+                Math.round(windSpeed * 0.621371) : Math.round(windSpeed)) : 0;
         
         const iconUrl = getWeatherIconUrl(desc, isDay, windSpeedMph);
         document.getElementById('current-icon').src = iconUrl;
@@ -314,15 +311,10 @@ function updateCurrentConditions(data) {
         const humidity = properties.relativeHumidity.value;
         document.getElementById('humidity').textContent = humidity !== null ? `${Math.round(humidity)}%` : 'N/A';
         
-        
-        const windDirection = properties.windDirection && properties.windDirection.value !== null ?
+        const windDirection = properties.windDirection.value !== null ?
             getCardinalDirection(properties.windDirection.value) : 'N/A';
-        
-        if (windSpeedMph > 0) {
-            document.getElementById('wind').textContent = `${windDirection} ${windSpeedMph} mph`;
-        } else {
-            document.getElementById('wind').textContent = 'Calm';
-        }
+        document.getElementById('wind').textContent = windSpeedMph !== 0 ?
+            `${windDirection} ${windSpeedMph} mph` : 'N/A';
         
         const pressure = properties.barometricPressure.value;
         const pressureInHg = pressure !== null ?
@@ -348,6 +340,7 @@ function updateCurrentConditions(data) {
             `Updated: ${lastUpdated.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})}` : 'Updated: --';
     }
 }
+
 
 
 function updateHourlyForecast(data) {
