@@ -282,12 +282,15 @@ function updateCurrentConditions(data) {
         const now = new Date();
         const hours = now.getHours();
         const isDay = hours >= 6 && hours < 18;
-        const windSpeed = properties.windSpeed.value;
-        const windSpeedMph = windSpeed !== null ?
-            (properties.windSpeed.unitCode && properties.windSpeed.unitCode.includes('km_h') ?
-                Math.round(windSpeed * 0.621371) : Math.round(windSpeed)) : 0;
         
-
+        let windSpeedMph = 0;
+        if (properties.windSpeed && properties.windSpeed.value !== null) {
+            const windSpeed = properties.windSpeed.value;
+            windSpeedMph = properties.windSpeed.unitCode && properties.windSpeed.unitCode.includes('km_h') ?
+                Math.round(windSpeed * 0.621371) : Math.round(windSpeed);
+        }
+        
+        
         const iconUrl = getWeatherIconUrl(desc, isDay, windSpeedMph);
         document.getElementById('current-icon').src = iconUrl;
         document.getElementById('current-icon').alt = desc;
@@ -311,10 +314,15 @@ function updateCurrentConditions(data) {
         const humidity = properties.relativeHumidity.value;
         document.getElementById('humidity').textContent = humidity !== null ? `${Math.round(humidity)}%` : 'N/A';
         
-        const windDirection = properties.windDirection.value !== null ?
+        
+        const windDirection = properties.windDirection && properties.windDirection.value !== null ?
             getCardinalDirection(properties.windDirection.value) : 'N/A';
-        document.getElementById('wind').textContent = windSpeedMph !== 'N/A' ?
-            `${windDirection} ${windSpeedMph} mph` : 'N/A';
+        
+        if (windSpeedMph > 0) {
+            document.getElementById('wind').textContent = `${windDirection} ${windSpeedMph} mph`;
+        } else {
+            document.getElementById('wind').textContent = 'Calm';
+        }
         
         const pressure = properties.barometricPressure.value;
         const pressureInHg = pressure !== null ?
