@@ -313,7 +313,7 @@ function updateCurrentConditions(data) {
         
         const windDirection = properties.windDirection.value !== null ?
             getCardinalDirection(properties.windDirection.value) : 'N/A';
-        if (windSpeedMph < 5) {
+        if (windSpeedMph <= 5) {
         document.getElementById('wind').textContent = windSpeedMph !== 0 ?
             `Calm` : 'N/A';
         } else {
