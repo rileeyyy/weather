@@ -2,7 +2,7 @@ function getWeatherIconUrl(description, isDay = true, windSpeedMph = 0) {
     const lowerDesc = description.toLowerCase();
     let iconName = '';
     
-    const isWindy = windSpeedMph >= 12 || lowerDesc.includes('windy');
+    const isWindy = windSpeedMph >= 15 || lowerDesc.includes('windy');
 
     if (lowerDesc.includes('thunderstorm')) {
         if (lowerDesc.includes('strong') || lowerDesc.includes('severe')) {
