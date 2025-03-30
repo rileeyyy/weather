@@ -105,7 +105,7 @@ function getWeatherIconUrl(description, isDay = true, windSpeedMph = 0, temperat
         } else if (isHot && isWindy) {
             iconName = 'Hot and Windy.png';
         } else if (lowerDesc.includes("partly"))
-            else if (isHot) {
+            if (isHot) {
                 iconName = 'Mostly Cloudy and Hot.png';
             } else {
                 iconName = 'Mostly Cloudy (day).png';
