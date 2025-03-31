@@ -1,7 +1,6 @@
 function getWeatherIconUrl(description, isDay = true, windSpeedMph = 0, temperature = null) {
     const lowerDesc = description.toLowerCase();
     let iconName = '';
-
     const isWindy = windSpeedMph >= 15 || lowerDesc.includes('windy');
     const isHot = lowerDesc.includes('hot') || (temperature !== null && temperature >= 80);
 
@@ -10,12 +9,12 @@ function getWeatherIconUrl(description, isDay = true, windSpeedMph = 0, temperat
             iconName = isHot ? 'Hot with Scattered Strong Thunderstorms.png' : 'Strong Thunderstorms.png';
         } else if (lowerDesc.includes('scattered')) {
             iconName = isHot ? 'Hot with Scattered Thunderstorms.png' :
-                      (isDay ? 'Scattered Thunderstorms (day).png' : 'Scattered Thunderstorms (night).png');
+                (isDay ? 'Scattered Thunderstorms (day).png' : 'Scattered Thunderstorms (night).png');
         } else if (lowerDesc.includes('isolated')) {
             iconName = isHot ? 'Hot with Isolated Thunderstorms.png' :
-                      (isDay ? 'Isolated Thunderstorms (day).png' : 'Isolated Thunderstorms (night).png');
+                (isDay ? 'Isolated Thunderstorms (day).png' : 'Isolated Thunderstorms (night).png');
         } else {
-            iconName = isHot ? 'Hot with Isolated Strong Thunderstorms.png' : 'Thunderstorms.png';
+            iconName = 'Thunderstorms.png';
         }
     } else if (lowerDesc.includes('drizzle')) {
         if (lowerDesc.includes('freezing')) {
@@ -104,7 +103,7 @@ function getWeatherIconUrl(description, isDay = true, windSpeedMph = 0, temperat
             }
         } else if (isHot && isWindy) {
             iconName = 'Hot and Windy.png';
-        } else if (lowerDesc.includes("partly"))
+        } else if (lowerDesc.includes("partly")) {
             if (isHot) {
                 iconName = 'Mostly Cloudy and Hot.png';
             } else {
